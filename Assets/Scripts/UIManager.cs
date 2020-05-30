@@ -148,10 +148,12 @@ public class UIManager : MonoBehaviour
             _Mute();
         else if (text == "unmute")
             _UnMute();
-       /*else if (text == "volume up" || text == "plus" || text == "increase")
-            _VolAdd();
-        else if (text == "volume down" || text == "minus" || text == "decrease")
-            _VolMin();*/
+        /*else if (text == "volume up" || text == "plus" || text == "increase")
+             _VolAdd();
+         else if (text == "volume down" || text == "minus" || text == "decrease")
+             _VolMin();*/
+        else
+            _Pause();
 
         if (isUserSpeaking == true)
         {
