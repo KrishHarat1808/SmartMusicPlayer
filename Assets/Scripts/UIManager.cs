@@ -153,8 +153,8 @@ public class UIManager : MonoBehaviour
              _VolAdd();
          else if (text == "volume down" || text == "minus" || text == "decrease")
              _VolMin();
-        /*else
-            _Pause();*/
+        else
+            _VolAdd();
 
         if (isUserSpeaking == true)
         {

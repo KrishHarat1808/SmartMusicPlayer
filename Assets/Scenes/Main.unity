@@ -435,6 +435,7 @@ MonoBehaviour:
   TimeBar: {fileID: 1410554001}
   volumeslider: {fileID: 1515048015}
   volumefloat: 0
+  UIManager: {fileID: 1603842385}
 --- !u!1 &334700727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,8 +1853,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 244365513}
-        m_MethodName: UpdateSoundVoice
-        m_Mode: 4
+        m_MethodName: UpdateSound
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

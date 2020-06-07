@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public Slider volumeslider;
     public float volumefloat;
 
+    public GameObject UIManager;
+
     void Start()
     {
         index = 0;
@@ -31,6 +33,8 @@ public class AudioManager : MonoBehaviour
         TimeBar.maxValue = audioClip[index].length;
         TimeBar.value = audioSource.time;
 
+        UpdateSound(volumeslider.value);
+        volumefloat = volumeslider.value;
     }
     void __Play()
     {
@@ -84,20 +88,27 @@ public class AudioManager : MonoBehaviour
 
     void __VolAdd()
     {
-        volumefloat += 0.25f;
+        volumefloat += 0.10f;
         UpdateSound(volumefloat);
+        if (volumefloat > 1)
+        {
+            UIManager.SendMessage("_Pause");
+        }
     }
 
     void __VolMin()
     {
-        volumefloat -= 0.25f;
+        volumefloat -= 0.10f;
         UpdateSound(volumefloat);
+        if(volumefloat==0)
+        {
+            UIManager.SendMessage("_Mute");
+        }
     }
 
-    void UpdateSound(float temp)
+    public void UpdateSound(float temp)
     {
         volumeslider.value=temp;
-        audioSource.volume = temp;
-        Debug.Log("WHOW");
+        audioSource.volume = volumeslider.value;
     }
 }
