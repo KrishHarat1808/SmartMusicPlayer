@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;   
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
 
         volumefloat = 0.50f;
         volumeslider.value = volumefloat;
+        UpdateSound(volumefloat);
     }
 
     void Update()
@@ -29,8 +30,9 @@ public class AudioManager : MonoBehaviour
         SongName.text = audioClip[index].name;
         TimeBar.maxValue = audioClip[index].length;
         TimeBar.value = audioSource.time;
+
     }
-   void __Play()
+    void __Play()
     {
         audioSource.Play();
     }
@@ -49,11 +51,11 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.mute = false;
     }
-    
+
     void __Next()
     {
-        
-        if(index== audioClip.Length -1)
+
+        if (index == audioClip.Length - 1)
         {
             index = 0;
         }
@@ -67,7 +69,7 @@ public class AudioManager : MonoBehaviour
 
     void __Prev()
     {
-       
+
         if (index == 0)
         {
             index = audioClip.Length - 1;
@@ -80,21 +82,22 @@ public class AudioManager : MonoBehaviour
         __Play();
     }
 
-   /* void __VolAdd()
+    void __VolAdd()
     {
-        volumeslider.value += 0.25f;
+        volumefloat += 0.25f;
+        UpdateSound(volumefloat);
     }
 
     void __VolMin()
     {
-        volumeslider.value -= 0.25f;
-    }*/
-    public void UpdateSound()
-    {
-        audioSource.volume = volumeslider.value;
+        volumefloat -= 0.25f;
+        UpdateSound(volumefloat);
     }
-    public void UpdateSoundVoice(float a)
+
+    void UpdateSound(float temp)
     {
-        audioSource.volume +=a;
+        volumeslider.value=temp;
+        audioSource.volume = temp;
+        Debug.Log("WHOW");
     }
 }

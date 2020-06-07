@@ -11,9 +11,10 @@ public class UIManager : MonoBehaviour
     public GameObject UnMute;
     public GameObject Prev;
     public GameObject Next;
-    public GameObject VolSlider;
+    //public GameObject VolSlider;
 
     public GameObject SoundManager;
+
     protected DictationRecognizer dictationRecognizer;
 
     [System.Serializable]
@@ -80,15 +81,15 @@ public class UIManager : MonoBehaviour
         SoundManager.SendMessage("__Next");
     }
     
-    /*public void _VolAdd()
+    public void _VolAdd()
     {
-        SoundManager.SendMessage("UpdateSoundVoice(0.25f)");
+        SoundManager.SendMessage("__VolAdd");
     }
 
     public void _VolMin()
     {
         SoundManager.SendMessage("__VolMin");
-    }*/
+    }
 
     private void DictationRecognizer_OnDictationHypothesis(string text)
     {
@@ -148,12 +149,12 @@ public class UIManager : MonoBehaviour
             _Mute();
         else if (text == "unmute")
             _UnMute();
-        /*else if (text == "volume up" || text == "plus" || text == "increase")
+        else if (text == "volume up" || text == "plus" || text == "increase")
              _VolAdd();
          else if (text == "volume down" || text == "minus" || text == "decrease")
-             _VolMin();*/
-        else
-            _Pause();
+             _VolMin();
+        /*else
+            _Pause();*/
 
         if (isUserSpeaking == true)
         {
